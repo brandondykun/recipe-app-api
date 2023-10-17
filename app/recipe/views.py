@@ -38,10 +38,11 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Create a new recipe."""
         serializer.save(user=self.request.user)
 
+
 class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
-                 mixins.UpdateModelMixin,
-                 mixins.ListModelMixin,
-                 viewsets.GenericViewSet):
+                            mixins.UpdateModelMixin,
+                            mixins.ListModelMixin,
+                            viewsets.GenericViewSet):
     """Base ViewSet for recipe attributes."""
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]

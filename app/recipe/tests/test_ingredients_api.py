@@ -9,11 +9,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from core.models import (
-    Ingredient,
-    Recipe,
-    Tag,
-)
+from core.models import Ingredient
 
 from recipe.serializers import IngredientSerializer
 
@@ -44,7 +40,6 @@ class PublicIngerdientAPITests(TestCase):
         res = self.client.get(INGREDIENTS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
-
 
 
 class PrivateIngerdientAPITests(TestCase):
