@@ -2,7 +2,6 @@
 Tests for the user api.
 """
 
-
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -15,10 +14,10 @@ TOKEN_URL = reverse('user:token')
 ME_URL = reverse('user:me')
 
 
-
 def create_user(**params):
     """Create and return new user."""
     return get_user_model().objects.create_user(**params)
+
 
 class PublicUserApiTests(TestCase):
     """Test the public features of the User API."""
@@ -85,7 +84,6 @@ class PublicUserApiTests(TestCase):
 
         self.assertIn('token', res.data)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-
 
     def test_create_token_bad_credentials(self):
         """Test returns error if credentails invalid."""
@@ -159,7 +157,3 @@ class PrivateUserApiTests(TestCase):
         self.assertEqual(self.user.name, payload['name'])
         self.assertTrue(self.user.check_password(payload['password']))
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-
-
-
-
